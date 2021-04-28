@@ -10,6 +10,6 @@ namespace SenderMessageAPI.Services
     public interface IMessagerService
     {
         public void sendMessage(Message msg);
-        public void updateDb(int id, string name, int value);
+        public void updateDb(int id, string name, double value);
     }
 }

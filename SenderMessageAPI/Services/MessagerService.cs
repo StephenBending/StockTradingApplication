@@ -23,7 +23,7 @@ namespace SenderMessageAPI.Services
             _rabbitService.publish(messageJson, "StockQueue");
         }
 
-        public async void updateDb(int id, string name, int value)
+        public async void updateDb(int id, string name, double value)
         {
             var msg = new Message()
             {

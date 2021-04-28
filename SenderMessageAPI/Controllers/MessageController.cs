@@ -35,7 +35,7 @@ namespace SenderMessageAPI.Controllers
 
         [HttpPut]
         [Route("{id}/{name}/{value}")]
-        public void sendMessage(int id, string name, int value)
+        public void sendMessage(int id, string name, double value)
         {
             _msgService.updateDb(id, name, value);
         }

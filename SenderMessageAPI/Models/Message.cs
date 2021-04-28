@@ -9,6 +9,6 @@ namespace SenderMessageAPI.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public float value { get; set; }
+        public double value { get; set; }
     }
 }
