@@ -9,7 +9,7 @@ namespace SenderMessageAPI.Services
     {
         public void publish(string messageJson, string queueName)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

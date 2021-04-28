@@ -28,13 +28,18 @@
                 <span asp-validation-for="StockValue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-primary" 
-                       onclick="window.location.href =document.getElementById('StockId').value +'/'+ document.getElementById('StockName').value +'/'+ document.getElementById('StockValue').value; return false;" />
+                <!--input type="submit" value="Update" class="btn btn-primary"
+                onclick="window.location.href =document.getElementById('StockId').value +'/'+ document.getElementById('StockName').value +'/'+ document.getElementById('StockValue').value; return false;" /-->
+                <input type="submit" value="Update" class="btn btn-primary"
+                       onclick=myFunc() />
             </div>
         </form>
     </div>
 </div>
 
+<script>
+    function myFunc() { window.open('https://localhost:44363/send/' + document.getElementById('StockId').value + '/' + document.getElementById('StockName').value + '/' + document.getElementById('StockValue').value); }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

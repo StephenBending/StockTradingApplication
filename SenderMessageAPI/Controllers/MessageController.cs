@@ -50,6 +50,15 @@ namespace SenderMessageAPI.Controllers
 
 
         [HttpGet]
+        [Route("{id}/{name}/{value}")]
+        public void getSendFull(int id, string name, double value)
+        {
+            //Bad way of doing this, but run out of time to do it properly
+            _msgService.updateDb(id, name, value);
+            //return "This API only allows the use of the PUT command, in the format /send/{id}/{name}/{value}";
+        }
+
+        [HttpGet]
         [Route("")]
         public string getSend()
         {
