@@ -28,16 +28,20 @@ namespace ReceiverMessageAPI.Services
             return messageInJSON;
         }
 
-        public async void AddToDb(int id, string name, double value)
+        public async void AddToDb()
         {
-
+            //Removed input variables, as those come from the RabbitMQ message
             var messageReadyToSend = ReceivedMessage();
+            var msg = JsonConvert.DeserializeObject<Message>(messageReadyToSend);
+
+            /*
             var msg = new Message()
             {
                 id = id,
                 name = name,
                 value = value
             };
+            */
 
             
     

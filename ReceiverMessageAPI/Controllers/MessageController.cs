@@ -22,9 +22,9 @@ namespace ReceiverMessageAPI.Controllers
 
         [HttpPost]
         [Route("")]
-        public void PostReceivedMessage(int id, string name, double value)
+        public void PostReceivedMessage()
         {
-            _msgService.AddToDb(id, name, value);
+            _msgService.AddToDb();
        }
     }
 
