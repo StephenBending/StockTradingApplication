@@ -51,6 +51,10 @@ namespace SenderPresentation
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+               // endpoints.MapControllerRoute(
+                 //   name: "Update",
+                   // pattern: "{controller=Update}/{action=Index}/{id=StockID}/{name=StockName}/{value=StockValue}");
             });
         }
     }
