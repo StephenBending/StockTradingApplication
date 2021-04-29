@@ -9,7 +9,7 @@ namespace ReceiverMessageAPI.Services
     public interface IMessageService
     {
         public string ReceivedMessage();
-        public void AddToDb();
+        public Task<string> AddToDb();
         
 
     }

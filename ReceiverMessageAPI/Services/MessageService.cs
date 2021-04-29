@@ -28,11 +28,14 @@ namespace ReceiverMessageAPI.Services
             return msg;
         }
 
-        public async void AddToDb()
+        public async Task<string> AddToDb()
         {
             //Removed input variables, as those come from the RabbitMQ message
-            var messageReadyToSend = ReceivedMessage();
-            var msg = JsonConvert.DeserializeObject<Message>(messageReadyToSend);
+            var messageReceived = ReceivedMessage();
+            if (messageReceived.Length <= 0) {
+                return "No message was received";
+            }
+            var msg = JsonConvert.DeserializeObject<Message>(messageReceived);
 
             /*
             var msg = new Message()
@@ -94,6 +97,7 @@ namespace ReceiverMessageAPI.Services
                 }
             }
 
+            return messageReceived;
 
         }
     }
