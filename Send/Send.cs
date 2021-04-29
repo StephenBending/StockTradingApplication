@@ -7,7 +7,7 @@ namespace Send
 {
     class Send
     {
-        static void Main(string[] args)
+        static void setupSend()
         {
             // Test Data
             Stock stock = new Stock

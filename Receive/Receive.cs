@@ -7,7 +7,7 @@ namespace Receive
 {
     class Receive
     {
-        static void Main(string[] args)
+        static void setupReceive()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using var connection = factory.CreateConnection();
