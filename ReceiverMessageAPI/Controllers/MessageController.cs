@@ -20,7 +20,7 @@ namespace ReceiverMessageAPI.Controllers
             _msgService = msgService;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("")]
         public void PostReceivedMessage()
         {

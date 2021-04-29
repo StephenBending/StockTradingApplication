@@ -18,7 +18,7 @@ namespace ReceiverMessageAPI.Services
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "stock", durable: false, exclusive: false, autoDelete: false, arguments: null);
+                channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
                 // below is how to consume the message
                 var consumer = new EventingBasicConsumer(channel);
 
@@ -31,7 +31,7 @@ namespace ReceiverMessageAPI.Services
                     //
                     receivedMessage = message;
                 };
-                channel.BasicConsume(queue: "stock", autoAck: true, consumer: consumer);
+                channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
 
 
             }

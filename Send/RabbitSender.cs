@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Send
 {
-    class Send
+    class RabbitSender
     {
         private readonly ConnectionFactory _factory;
 
-        public Send(ConnectionFactory factory)
+        public RabbitSender(ConnectionFactory factory)
         {
             _factory = factory;
         }

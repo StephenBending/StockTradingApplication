@@ -23,9 +23,9 @@ namespace ReceiverMessageAPI.Services
         public string ReceivedMessage()
         {
             //  string messageJson = JsonConvert.SerializeObject(msg);
-            string msg = _rabbitService.CollectMessage("stock");
-            var messageInJSON = JsonConvert.SerializeObject(msg);
-            return messageInJSON;
+            string msg = _rabbitService.CollectMessage("StockQueue");
+            //var messageInJSON = JsonConvert.SerializeObject(msg);
+            return msg;
         }
 
         public async void AddToDb()
@@ -65,7 +65,8 @@ namespace ReceiverMessageAPI.Services
 
 
 
-            string connectionString = "Data Source = desktop - f2jtkt5\\sqlll; Initial Catalog = stock; Integrated Security = True";
+            //string connectionString = "Data Source = desktop - f2jtkt5\\sqlll; Initial Catalog = stock; Integrated Security = True";
+            string connectionString = "data source=.\\SQLExpress;initial catalog=StocksDb;user id=sa;password=sa;MultipleActiveResultSets=True;App=EntityFramework";
 
             using (var conn = new SqlConnection(connectionString))
             {
@@ -74,11 +75,16 @@ namespace ReceiverMessageAPI.Services
                     try
                     {
                         conn.Open();
-                        comm.CommandText = $"INSERT INTO stockTable (StockID, StockName, StockValue)" +
+                        /*
+                        comm.CommandText = $"INSERT INTO StockTableReceiver (StockID, StockName, StockValue)" +
                             $" SELECT id, name, value" +
                             $"FROM OPENJSON({ messageReadyToSend})" +
-                            $"WITH(id int,name nvarchar(30), value decimal(18, 2))";
+                            $"WITH(id int,name nvarchar(30), value int)";//decimal(18, 2))";
+                        */
 
+                        comm.CommandText = "INSERT INTO StockTableReceiver (StockName, StockValue) VALUES (@name,@value)";
+                        comm.Parameters.AddWithValue("@name", msg.name);
+                        comm.Parameters.AddWithValue("@value", msg.value);
                         await Task.Run(() => comm.ExecuteNonQuery());
                     }
                     finally

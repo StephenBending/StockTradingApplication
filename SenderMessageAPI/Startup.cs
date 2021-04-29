@@ -22,8 +22,8 @@ namespace SenderMessageAPI
             services.AddSingleton<IMessagerService, MessagerService>();
 
             //Only use one
-            services.AddSingleton<IRabbitService, DummyRabbitService>();
-            //services.AddSingleton<IRabbitService, RabbitService>();
+            //services.AddSingleton<IRabbitService, DummyRabbitService>();
+            services.AddSingleton<IRabbitService, RabbitService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
