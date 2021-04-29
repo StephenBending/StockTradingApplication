@@ -1,17 +1,21 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
+using System.Collections;
 using System.Text;
 
 namespace Receive
 {
     class Receive
     {
-        static void setupReceive()
+        public ArrayList receiveMessages()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
+            var messageList = new ArrayList();
+            
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
+
 
             channel.QueueDeclare(
                 queue: "stock",
@@ -25,7 +29,8 @@ namespace Receive
             {
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine("Receiver received {0}", message);
+                //Console.WriteLine("Receiver received {0}", message);
+                messageList.Add(message);
             };
 
             channel.BasicConsume(
@@ -33,7 +38,8 @@ namespace Receive
                 autoAck: true,
                 consumer: consumer);
 
-            Console.ReadLine();
+            //Console.ReadLine();
+            return messageList;
         }
     }
 }

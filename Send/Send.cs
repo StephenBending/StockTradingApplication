@@ -7,7 +7,14 @@ namespace Send
 {
     class Send
     {
-        static void setupSend()
+        private readonly ConnectionFactory _factory;
+
+        public Send(ConnectionFactory factory)
+        {
+            _factory = factory;
+        }
+
+        public void setupSend()
         {
             // Test Data
             Stock stock = new Stock
@@ -17,8 +24,7 @@ namespace Send
                 Value = 1234
             };
 
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using var connection = factory.CreateConnection();
+            using var connection = _factory.CreateConnection();
             using var channel = connection.CreateModel();
 
             channel.QueueDeclare(
@@ -28,6 +34,7 @@ namespace Send
                 autoDelete: false,
                 arguments: null);
 
+            /*
             string message = JsonConvert.SerializeObject(stock);
             var body = Encoding.UTF8.GetBytes(message);
 
@@ -39,6 +46,21 @@ namespace Send
 
             Console.WriteLine("Sender sent {0}", message);
             Console.ReadLine();
+            */
+        }
+
+        public void send(string message)
+        {
+            using var connection = _factory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            var body = Encoding.UTF8.GetBytes(message);
+
+            channel.BasicPublish(
+                exchange: "",
+                routingKey: "stock",
+                basicProperties: null,
+                body: body);
         }
     }
 }
