@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Send", "Send\Send.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverMessageAPI", "ReceiverMessageAPI\ReceiverMessageAPI.csproj", "{F9C60D6E-4852-4ED1-8F0C-BFD87677357C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SImpleReceiverPresentation", "SImpleReceiverPresentation\SImpleReceiverPresentation.csproj", "{FBE4B450-B3C0-4984-BFD8-5A2596033615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SImpleReceiverPresentation", "SImpleReceiverPresentation\SImpleReceiverPresentation.csproj", "{FBE4B450-B3C0-4984-BFD8-5A2596033615}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTicker", "..\..\..\source\repos\StockTicker\StockTicker\StockTicker.csproj", "{DB660F0A-42D4-4CB8-8DB9-664828A710B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{FBE4B450-B3C0-4984-BFD8-5A2596033615}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBE4B450-B3C0-4984-BFD8-5A2596033615}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBE4B450-B3C0-4984-BFD8-5A2596033615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB660F0A-42D4-4CB8-8DB9-664828A710B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB660F0A-42D4-4CB8-8DB9-664828A710B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB660F0A-42D4-4CB8-8DB9-664828A710B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB660F0A-42D4-4CB8-8DB9-664828A710B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
